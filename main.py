@@ -102,7 +102,10 @@ F, U, Um, Kcal = set_BC(K, node_BC, node_F, num_node, load)
 ###-------------------------------------###
 from mod_solver import solver
 U = solver(Kcal, F)
+print("Calculated displacement of nodes is following:")
 print(U)
+print()
+print()
 
 ###------------------------------------------------###
 ###    Calculate Reaction Force([RF] = [K][UF]     ###
@@ -116,14 +119,20 @@ RF = make_RF(K, U)
 ###-----------------------------------------------------------###
 from mod_make_strain_element import make_strain_element
 strain_ele = make_strain_element(B, U, num_ele, dof_node, num_tria3_node, connectivity)
-#print(strain_ele.data)
+print("Calculated strain of element is following:")
+print(strain_ele)
+print()
+print()
 
 ###-----------------------------------------------------------###
 ###    Calculate Strain in each element([Strain] = [B][U]     ###
 ###-----------------------------------------------------------###
 from mod_make_stress_element import make_stress_element
 stress_ele = make_stress_element(D, strain_ele)
-#print(stress_ele.data)
+print("Calculated stress of element is following:")
+print(stress_ele)
+print()
+print()
 
 end = time.time() - start
 print("Calculation time[sec]: ", end)
